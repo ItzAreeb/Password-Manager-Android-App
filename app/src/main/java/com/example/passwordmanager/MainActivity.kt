@@ -101,9 +101,14 @@ class MainActivity : FragmentActivity() {
                                     onImport = { importedAccounts ->
                                         accounts.clear()
                                         accounts.addAll(importedAccounts)
+                                        EncryptionHelper.saveAccounts(this@MainActivity, accounts)
                                     },
                                     onExport = { accounts.toList() },
-                                    onDeleteAll = { accounts.clear() }
+                                    onDeleteAll = {
+                                        accounts.clear()
+                                        EncryptionHelper.saveAccounts(this@MainActivity, accounts)
+
+                                    }
                                 )
                             }
                         }

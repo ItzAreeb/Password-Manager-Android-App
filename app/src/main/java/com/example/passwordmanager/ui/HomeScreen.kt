@@ -15,6 +15,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.passwordmanager.data.Account
+import com.example.passwordmanager.data.EncryptionHelper
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -119,6 +120,7 @@ fun HomeScreen(
                     onDelete = {
                         accounts.remove(account)
                         deletingAccount = null
+                        EncryptionHelper.saveAccounts(context, accounts)
                     }
                 )
             }
